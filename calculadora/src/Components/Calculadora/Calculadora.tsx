@@ -8,14 +8,22 @@ import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import CalculateIcon from "@mui/icons-material/Calculate";
-import { calcularBase, calcularBaseFormato, FACTOR, formatNumber } from "./utilities";
+import {
+  calcularBase,
+  calcularBaseFormato,
+  FACTOR,
+  formatNumber,
+} from "./utilities";
 import { Button } from "@mui/material";
 import { CalculaContext } from "../../Context/contextCalculadora";
+import Checkbox from "@mui/material/Checkbox";
 
 export function Calculadora() {
   const [carValue, setCarValue] = useState<string>("");
   const [optionFactor, setOptionFactor] = useState(1.0);
   const [errorInput, setErrorInput] = useState<boolean>(false);
+  const [checkInput, setCheckInput] = useState<boolean>(false);
+
   const context = useContext(CalculaContext);
   if (!context) {
     throw new Error("Calculadora debe renderizarse dentro de CalculaProvider.");
@@ -40,21 +48,24 @@ export function Calculadora() {
 
   const onChangeSelect = (event: ChangeEvent<HTMLInputElement>) => {
     const valor: number = Number(event.target.value);
-    setOptionFactor(valor)
+    setOptionFactor(valor);
   };
 
-
-
-  const onClickCalcularBtn=()=>{
-    console.log("BTN")
+  const onClickCalcularBtn = () => {
+    console.log("BTN");
     setDatosCalcula({
       ...datosCalcula,
       factor: optionFactor,
       precio: Number(carValue),
-      seguro: calcularBase(Number(carValue),optionFactor),
-      seguroFormato: calcularBaseFormato(Number(carValue),optionFactor)
+      seguro: calcularBase(Number(carValue), optionFactor),
+      seguroFormato: calcularBaseFormato(Number(carValue), optionFactor),
+      needCar: checkInput
     });
-  }
+  };
+
+  const onChangeCheck = () => {
+    setCheckInput((prev) => !prev);
+  };
 
   const outlinedAmountId = React.useId();
   return (
@@ -106,13 +117,20 @@ export function Calculadora() {
               return <MenuItem value={item.fact}>{item.text}</MenuItem>;
             })}
           </TextField>
+
+          <div className="calculadora-need">
+            <Checkbox value={checkInput} size="small" />
+            <span className="text-sm pt-2" onChange={onChangeCheck}>
+              Necesito vehiculo de reemplazo en caso de siniestro
+            </span>
+          </div>
         </div>
         <Button
           type="button"
           variant="contained"
           endIcon={<CalculateIcon />}
           onClick={onClickCalcularBtn}
-          disabled = {errorInput}
+          disabled={errorInput}
         >
           Calcular y comparar planes
         </Button>

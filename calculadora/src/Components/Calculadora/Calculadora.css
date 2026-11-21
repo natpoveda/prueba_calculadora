@@ -26,3 +26,8 @@
     @apply text-red-700 text-sm m-1
   }
 }
+
+.calculadora-need{
+  @apply flex text-sm
+
+}

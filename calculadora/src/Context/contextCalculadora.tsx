@@ -11,6 +11,7 @@ type DatosCalcula = {
   precio: number;
   seguro: number;
   seguroFormato: string;
+  needCar: boolean
 };
 
 type CalculaContextValue = {
@@ -25,7 +26,8 @@ export function CalculaProvider({ children }: { children: ReactNode }) {
     factor: 0,
     precio: 0,
     seguro: 0,
-    seguroFormato: ''
+    seguroFormato: '',
+    needCar: false
   });
 
   return (
