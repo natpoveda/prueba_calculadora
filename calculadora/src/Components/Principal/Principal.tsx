@@ -6,8 +6,8 @@ import './Principal.css'
 export function Principal() {
   return (
     <CalculaProvider>
-    <div className="principal">
-      <div className="principal-frame principal-left"><Calculadora></Calculadora></div>
+    <div className="principal" tabIndex={3}>
+      <div className="principal-frame principal-left" tabIndex={4}><Calculadora></Calculadora></div>
       <div className="principal-frame principal-right">
         <Comparador />
       </div>

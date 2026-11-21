@@ -19,3 +19,41 @@ footer {
      @apply w-2/3 text-2xl text-left p-2.5
   }
 }
+
+@media (max-width: 767px) {
+  footer {
+    padding: 1.5rem 1rem;
+  }
+
+  .footer-boxes {
+    width: 100%;
+    max-width: 28rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .footer-box {
+    width: 100%;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .footer-box img {
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    object-fit: contain;
+  }
+
+  .footer-box p {
+    width: auto;
+    flex: 1;
+    padding: 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  .footer-box p strong {
+    display: block;
+  }
+}

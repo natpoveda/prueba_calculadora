@@ -18,6 +18,13 @@ import { Button } from "@mui/material";
 import { CalculaContext } from "../../Context/contextCalculadora";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import {
+  enviarCotizacionCalculada,
+  type PlanSeleccionado,
+} from "../../../eventos.js";
+
+const MIN_CAR_VALUE = 20_000_000;
+const MAX_CAR_VALUE = 300_000_000;
 
 export function Calculadora() {
   const [carValue, setCarValue] = useState<string>("");
@@ -39,8 +46,7 @@ export function Calculadora() {
     const valor = event.target.value.replace(/\D/g, "");
     setCarValue(valor);
     const valorMonetario = Number(valor);
-    setCarValue(valor);
-    if (valorMonetario >= 20000000 && valorMonetario <= 300000000) {
+    if (valorMonetario >= MIN_CAR_VALUE && valorMonetario <= MAX_CAR_VALUE) {
       setErrorInput(false);
     } else {
       setErrorInput(true);
@@ -53,23 +59,42 @@ export function Calculadora() {
   };
 
   const onClickCalcularBtn = () => {
-    console.log("BTN");
+    const precio = Number(carValue);
+    if (
+      !carValue ||
+      precio < MIN_CAR_VALUE ||
+      precio > MAX_CAR_VALUE
+    ) {
+      setErrorInput(true);
+      return;
+    }
+
+    const seguro = calcularBase(precio, optionFactor);
+    const planSeleccionado: PlanSeleccionado = checkInput
+      ? "Plus"
+      : "Esencial";
+    const primaEstimada = Math.round(
+      checkInput ? seguro * 1.35 : seguro,
+    );
+
     setDatosCalcula({
       ...datosCalcula,
       factor: optionFactor,
-      precio: Number(carValue),
-      seguro: calcularBase(Number(carValue), optionFactor),
-      seguroFormato: calcularBaseFormato(Number(carValue), optionFactor),
-      needCar: checkInput
+      precio,
+      seguro,
+      seguroFormato: calcularBaseFormato(precio, optionFactor),
+      needCar: checkInput,
     });
+
+    enviarCotizacionCalculada(planSeleccionado, primaEstimada);
   };
 
   const outlinedAmountId = React.useId();
   return (
-    <div className="calculadora">
+    <div className="calculadora" tabIndex={5}>
       <h2>1. Cuéntanos sobre tu vehículo</h2>
       <form className="calculadora-board">
-        <div className="calculadora-precio">
+        <div className="calculadora-precio" tabIndex={6}>
           <label htmlFor="precio">
             Valor comercial del vehículo <MdInfoOutline />
           </label>
@@ -97,7 +122,7 @@ export function Calculadora() {
           )}
         </div>
 
-        <div className="calculadora-opciones">
+        <div className="calculadora-opciones" tabIndex={7}>
           <label htmlFor="opciones">
             Antiguedad del vehículo <MdInfoOutline />
           </label>
@@ -115,7 +140,7 @@ export function Calculadora() {
             })}
           </TextField>
 
-          <div className="calculadora-need">
+          <div className="calculadora-need" tabIndex={8}>
             <FormControlLabel
               control={
                 <Checkbox
@@ -134,7 +159,9 @@ export function Calculadora() {
           variant="contained"
           endIcon={<CalculateIcon />}
           onClick={onClickCalcularBtn}
-          disabled={errorInput}
+          disabled={errorInput || !carValue}
+          tabIndex={9}
+          id="cotizacion_calculada"
         >
           Calcular y comparar planes
         </Button>

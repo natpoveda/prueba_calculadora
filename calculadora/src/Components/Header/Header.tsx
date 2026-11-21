@@ -8,7 +8,7 @@ export function Header(){
     return(
         <header>
             <div className="header-all">
-                <div className="header-left">
+                <div className="header-left" tabIndex={0}>
                     <a href='#'><img className="image-bluered" src={logo} alt="Logo" /></a>  
                 </div>
                  <div className="header-right">

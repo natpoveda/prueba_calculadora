@@ -31,3 +31,49 @@
   @apply flex text-sm
 
 }
+
+@media (max-width: 767px) {
+  .calculadora,
+  .calculadora-board {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .calculadora label {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .calculadora-precio > .MuiFormControl-root,
+  .calculadora-opciones > .MuiFormControl-root {
+    width: 100% !important;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .calculadora-precio .MuiOutlinedInput-root,
+  .calculadora-opciones .MuiInputBase-root {
+    width: 100%;
+  }
+
+  .calculadora-need {
+    align-items: flex-start;
+  }
+
+  .calculadora-need .MuiFormControlLabel-root {
+    align-items: flex-start;
+    margin: 0;
+  }
+
+  .calculadora-need .MuiFormControlLabel-label {
+    padding-top: 0.4rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .calculadora .MuiButton-root {
+    width: 100%;
+    min-height: 48px;
+  }
+}

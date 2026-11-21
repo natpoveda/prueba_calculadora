@@ -39,11 +39,12 @@ function PlanCard({
     <article
       className={`comparador-card${recommended ? " comparador-card-recommended" : ""}`}
       aria-label={`Plan ${name}${recommended ? ", recomendado" : ""}`}
+      tabIndex={10}
     >
       {recommended && (
         <span className="comparador-badge">Recomendado</span>
       )}
-      <div className="comparador-card-heading">
+      <div className="comparador-card-heading"  tabIndex={11}>
         <span className={`comparador-icon${plus ? " comparador-icon-plus" : ""}`}>
           {plus ? <WorkspacePremiumOutlinedIcon /> : <ShieldOutlinedIcon />}
         </span>
@@ -92,11 +93,11 @@ export function Comparador() {
     : "porque tiene el menor precio.";
 
   return (
-    <section className="comparador" aria-labelledby="comparador-title">
+    <section className="comparador" aria-labelledby="comparador-title" tabIndex={12}>
       <header className="comparador-header">
         <h2 id="comparador-title">2. Compara nuestras coberturas</h2>
       </header>
-      <div className="comparador-plans">
+      <div className="comparador-plans" tabIndex={13}>
         <PlanCard
           name="Esencial"
           description="Protección básica para tu vehículo"
@@ -112,7 +113,7 @@ export function Comparador() {
           plus
         />
       </div>
-      <aside className="comparador-difference" aria-live="polite">
+      <aside className="comparador-difference" aria-live="polite" tabIndex={13}>
         <InfoOutlinedIcon className="comparador-difference-icon" />
         <div>
           <p className="comparador-difference-title">
