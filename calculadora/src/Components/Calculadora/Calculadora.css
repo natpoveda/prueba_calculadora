@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+.calculadora {
+  @apply flex flex-col;
+  label{
+    @apply  text-black  text-xl mb-2.5;
+    display: ruby;
+}
+
+  h2 {
+    color: #03154e;
+    
+  }
+}
+
+.calculadora-precio,
+.calculadora-opciones {
+  @apply flex flex-col text-black text-left mb-5.5;
+
+  .calculadora-board-input{
+    @apply border rounded-md border-gray-400 text-black font-bold;
+    width: 95%;
+  }
+
+  .alert{
+    @apply text-red-700 text-sm m-1
+  }
+}

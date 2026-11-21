@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+main{
+  @apply pl-8;
+  background-color: #ECF2FD;
+}

@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+
+.principal{
+    @apply w-full flex justify-between pr-8;
+    background-color:#ECF2FD;
+    height: 600px;
+}
+
+.principal-left{
+    @apply w-1/3 h-fit
+}
+
+.principal-right{
+    @apply w-3/5 h-fit
+}
+
+.principal-frame {
+    @apply bg-white py-7 px-6 rounded-2xl;
+}

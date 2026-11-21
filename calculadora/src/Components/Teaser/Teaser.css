@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+h1{
+    @apply w-full font-bold text-4xl;
+    color: #03154E;
+}
+
+p{
+ @apply text-black text-2xl;
+}
+
+.teaser-all{
+    @apply w-full flex pt-3
+}
+
+.teaser-left{
+    @apply w-1/3 pt-1.5 flex flex-col text-left;
+    height: 386px
+}
+
+.teaser-left-label{
+    @apply px-1.5 text-xl font-bold ;
+    background-color:#D6E4FD;
+    color: #050666;
+    width: fit-content;
+
+}
