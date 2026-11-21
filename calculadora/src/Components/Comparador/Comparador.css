@@ -1,0 +1,192 @@
+.comparador {
+  width: 100%;
+  color: #172554;
+}
+
+.comparador-header {
+  margin-bottom: 1.25rem;
+  text-align: left;
+}
+
+.comparador-header h2 {
+  color: #03154e;
+}
+
+.comparador-header p {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.comparador-plans {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.comparador-card {
+  position: relative;
+  min-width: 0;
+  padding: 1.25rem;
+  border: 1px solid #dfe4f0;
+  border-radius: 1rem;
+  background: linear-gradient(145deg, #fff, #f8faff);
+  text-align: left;
+}
+
+.comparador-card-recommended {
+  border: 2px solid #5865f2;
+  background: linear-gradient(145deg, #fff, #f1f3ff);
+}
+
+.comparador-badge {
+  position: absolute;
+  top: -0.8rem;
+  right: 1rem;
+  padding: 0.15rem 0.8rem;
+  border-radius: 999px;
+  background-color: #5865f2;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.comparador-card-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.comparador-icon {
+  display: grid;
+  flex: 0 0 2.75rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border-radius: 50%;
+  background-color: #eef7f6;
+  color: #0d9488;
+}
+
+.comparador-icon-plus {
+  background-color: #e9ebff;
+  color: #4052e8;
+}
+
+.comparador-icon svg {
+  font-size: 1.75rem;
+}
+
+.comparador-card h3 {
+  margin: 0;
+  color: #101c59;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.comparador-card-heading p {
+  margin-top: 0.15rem;
+  color: #475569;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.comparador-price {
+  margin-top: 1rem;
+  color: #101c59;
+  font-size: clamp(1.55rem, 2.4vw, 2rem);
+  font-weight: 750;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.comparador-price-caption {
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.comparador-features {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid #dfe4f0;
+  list-style: none;
+}
+
+.comparador-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #24314f;
+  font-size: 0.9rem;
+}
+
+.comparador-features svg {
+  flex: 0 0 1.25rem;
+  font-size: 1.25rem;
+}
+
+.comparador-feature-included {
+  color: #059669;
+}
+
+.comparador-feature-excluded {
+  color: #aab2c2;
+}
+
+.comparador-difference {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.8rem;
+  background-color: #eeedff;
+  color: #334155;
+  text-align: left;
+}
+
+.comparador-difference-icon {
+  flex: 0 0 1.5rem;
+  margin-top: 0.1rem;
+  color: #4052e8;
+}
+
+.comparador-difference-title {
+  color: #101c59;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.comparador-difference-title strong {
+  color: #101c59;
+}
+
+.comparador-recommendation {
+  margin-top: 0.15rem;
+  color: #334155;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .comparador-plans {
+    gap: 0.75rem;
+  }
+
+  .comparador-card {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .comparador-plans {
+    grid-template-columns: 1fr;
+  }
+
+  .comparador-price {
+    font-size: 1.75rem;
+  }
+}

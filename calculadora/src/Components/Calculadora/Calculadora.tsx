@@ -17,6 +17,7 @@ import {
 import { Button } from "@mui/material";
 import { CalculaContext } from "../../Context/contextCalculadora";
 import Checkbox from "@mui/material/Checkbox";
+import FormControlLabel from "@mui/material/FormControlLabel";
 
 export function Calculadora() {
   const [carValue, setCarValue] = useState<string>("");
@@ -61,10 +62,6 @@ export function Calculadora() {
       seguroFormato: calcularBaseFormato(Number(carValue), optionFactor),
       needCar: checkInput
     });
-  };
-
-  const onChangeCheck = () => {
-    setCheckInput((prev) => !prev);
   };
 
   const outlinedAmountId = React.useId();
@@ -119,10 +116,17 @@ export function Calculadora() {
           </TextField>
 
           <div className="calculadora-need">
-            <Checkbox value={checkInput} size="small" />
-            <span className="text-sm pt-2" onChange={onChangeCheck}>
-              Necesito vehiculo de reemplazo en caso de siniestro
-            </span>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={checkInput}
+                  onChange={(event) => setCheckInput(event.target.checked)}
+                  size="small"
+                />
+              }
+              label="Necesito vehiculo de reemplazo en caso de siniestro"
+              className="text-sm"
+            />
           </div>
         </div>
         <Button
